@@ -19,22 +19,48 @@ public class FaIdomok {
         System.out.println("A programban használt hengerek:");
         System.out.println(idomok.get(0).toString());
         System.out.println(idomok.get(1).toString());
-        System.out.println("Idomok összes súlya:");
-        System.out.println("Gömbök összes súlya:");
-        System.out.println("Minimum térfogat:");
-        System.out.println("Maximum térfogat:");
+        System.out.println("Idomok összes súlya:" + osszSuly());
+        System.out.println("Gömbök összes súlya:" + osszGombSuly());
+        System.out.println("Minimum térfogat:" + minV().terfogat());
+        System.out.println("Maximum térfogat:" + maxV().terfogat());
     }
     public double osszSuly(){
-        return 0;
+        double ossz = 0;
+        for (FaIdom idom : idomok) {
+            ossz += idom.suly();
+        }
+        return ossz;
     }
     public double osszGombSuly(){
-        return 0;
+        double ossz = 0;
+        for (FaIdom idom : idomok) {
+            if(idom instanceof Gomb){
+                ossz += idom.suly();
+            }
+        }
+        return ossz;
     }
     public FaIdom minV(){
-        return idomok.get(0);
+        double max = 0;
+        int index = 0;
+        for (int i = 0; i<idomok.size(); i++){
+            if(idomok.get(i).terfogat() > max){
+                max = idomok.get(i).terfogat();
+                index = i;
+            }
+        }
+        return idomok.get(index);
     }
     public FaIdom maxV(){
-        return idomok.get(0);
+        double min = 0;
+        int index = 0;
+        for (int i = 0; i<idomok.size(); i++){
+            if(idomok.get(i).terfogat() < min){
+                min = idomok.get(i).terfogat();
+                index = i;
+            }
+        }
+        return idomok.get(index);
     }
 
 }

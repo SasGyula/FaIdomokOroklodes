@@ -1,7 +1,7 @@
 package hu.szamalk.modell;
 
 public abstract class FaIdom{
-    private double fajsuly;
+    private static double fajsuly;
 
     public FaIdom() {
         this.fajsuly = 0.8;
@@ -10,7 +10,7 @@ public abstract class FaIdom{
         return 0;
     }
     public double suly(){
-        return 0;
+        return terfogat() * FaIdom.fajsuly;
     }
 
     @Override
